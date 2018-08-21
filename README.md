@@ -6,21 +6,20 @@ This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgn
 
 ### Distance Function
 
-A *change* to a sentence $\alpha$ can be:
+A *change* to a sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/> can be:
 
-* deleting a word from $\alpha$;
-* or adding a word to $\alpha$.
+* deleting a word from <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/>;
+* or adding a word to <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/>.
 
-A distance function $d(\cdot,\cdot)$ of sentences is then defined as:
+A distance function <img src="https://rawgit.com/xhu4/sentences/master/svgs/9edebb8c5008b7dbd2689724ff970994.svg?invert_in_darkmode" align=middle width=37.648875pt height=24.56553pt/> of sentences is then defined as:
 
-$$ d(\alpha,\beta)\coloneqq\text{minimum number of changes applied to $\alpha$ to get $\beta$}
-. $$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/703e8050fad89e2d4eb0acc55fa5e2d6.svg?invert_in_darkmode" align=middle width=418.02585pt height=16.376943pt/></p>
 
-The goal is to filter out a set of sentences in a text file, given $k$, such that:
+The goal is to filter out a set of sentences in a text file, given <img src="https://rawgit.com/xhu4/sentences/master/svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.041505pt height=22.74591pt/>, such that:
 
-* for any two distinct sentences $\alpha, \beta$ in output file, $d(\alpha,\beta)>k$,
-* and for every sentence $\alpha$ in the input file, there is at least a sentence $\beta$ in 
-  the output file such that $d(\alpha,\beta)\le k$.
+* for any two distinct sentences <img src="https://rawgit.com/xhu4/sentences/master/svgs/d7093223b4d827e8c29d4ed84b7ae088.svg?invert_in_darkmode" align=middle width=27.95364pt height=22.74591pt/> in output file, <img src="https://rawgit.com/xhu4/sentences/master/svgs/96249f7c090ac68c03ddb83326555ddc.svg?invert_in_darkmode" align=middle width=80.12994pt height=24.56553pt/>,
+* and for every sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/> in the input file, there is at least a sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.1277pt height=22.74591pt/> in 
+  the output file such that <img src="https://rawgit.com/xhu4/sentences/master/svgs/2e282cf564be11414c36cc367cedcdec.svg?invert_in_darkmode" align=middle width=80.12994pt height=24.56553pt/>.
 
 ---
 
@@ -69,49 +68,48 @@ distinct_sentences = set(input_sentences)
 Since `set` is implemented using hash table, this algorithm has a linear complexity to the 
 number of sentences.
 
-The rest of this section talks about solving $k>1$.
+The rest of this section talks about solving <img src="https://rawgit.com/xhu4/sentences/master/svgs/8733ac5ecc35ea70e3e236ade3c28a60.svg?invert_in_darkmode" align=middle width=39.101865pt height=22.74591pt/>.
 
 ### Basic Idea
 
 We define some notations as follows:
 
-* $l(\alpha)$: number of words of sentence $\alpha$;
-* $\alpha - n$: set of all strings that are sentence `\alpha` delete $n$ words;
-* $\alpha -m = \beta - n$: $(\alpha-m) \cap (\beta-n) \ne \emptyset$. Or, there exists a way 
-  such that sentence $\alpha$ removing some $m$ words is identical to sentence $\beta$ 
-  removing $n$ words;
+* <img src="https://rawgit.com/xhu4/sentences/master/svgs/0794595b496cc9157977e2858fc49255.svg?invert_in_darkmode" align=middle width=28.48494pt height=24.56553pt/>: number of words of sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/>;
+* <img src="https://rawgit.com/xhu4/sentences/master/svgs/50d755f7a5b0e4f0070fcddea3298af7.svg?invert_in_darkmode" align=middle width=40.410645pt height=19.10667pt/>: set of all strings that are sentence `\alpha` delete <img src="https://rawgit.com/xhu4/sentences/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.83004pt height=14.10255pt/> words;
+* <img src="https://rawgit.com/xhu4/sentences/master/svgs/808bfd7c24438423e9205226937534f7.svg?invert_in_darkmode" align=middle width=106.834035pt height=22.74591pt/>: <img src="https://rawgit.com/xhu4/sentences/master/svgs/e093d8f02802fb6e360298ca1eece6a2.svg?invert_in_darkmode" align=middle width=158.722245pt height=24.56553pt/>. Or, there exists a way 
+  such that sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/> removing some <img src="https://rawgit.com/xhu4/sentences/master/svgs/0e51a2dede42189d77627c4d742822c3.svg?invert_in_darkmode" align=middle width=14.379255pt height=14.10255pt/> words is identical to sentence <img src="https://rawgit.com/xhu4/sentences/master/svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.1277pt height=22.74591pt/> 
+  removing <img src="https://rawgit.com/xhu4/sentences/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.83004pt height=14.10255pt/> words;
   
-Given two sentences $\alpha$ and $beta$, if
+Given two sentences <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/> and <img src="https://rawgit.com/xhu4/sentences/master/svgs/651da20cd8f863cb3481bd6aa766d287.svg?invert_in_darkmode" align=middle width=29.224635pt height=22.74591pt/>, if
 
-$$ \alpha-m = \beta-n, $$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/20805d87b4cf905539b8c19e3c48f5cc.svg?invert_in_darkmode" align=middle width=111.383085pt height=14.55729pt/></p>
 
 then
 
-$$ d(\alpha, \beta) = m+n-2p, \text{ for some } p \in \mathbb{N}.$$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/7fa3351fd2f0111fc6ee9589ccdbb0aa.svg?invert_in_darkmode" align=middle width=275.59455pt height=16.376943pt/></p>
 
-If $l(\alpha)-l(\beta)=h\ge0$, since $l(\alpha)-m = l(\beta)-n$, must have $m-n=h$. Thus
+If <img src="https://rawgit.com/xhu4/sentences/master/svgs/9a1cadf7edaedea5b35c976a8ee22453.svg?invert_in_darkmode" align=middle width=137.970855pt height=24.56553pt/>, since <img src="https://rawgit.com/xhu4/sentences/master/svgs/c4526acbb1c9b612fdcc94cd36cc04e4.svg?invert_in_darkmode" align=middle width=142.72929pt height=24.56553pt/>, must have <img src="https://rawgit.com/xhu4/sentences/master/svgs/b0af4bfccba79e3d7b4867df584cb377.svg?invert_in_darkmode" align=middle width=75.558285pt height=22.74591pt/>. Thus
 
-$$ d(A,B) = h+2n+2p = h+2t, \text{ for some } t\in\mathbb{N}. $$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/ed4d7b82a15341b5c68e8e2f84305946.svg?invert_in_darkmode" align=middle width=346.8267pt height=16.376943pt/></p>
 
-Then $d(\alpha, \beta) \le k$ if and only if
+Then <img src="https://rawgit.com/xhu4/sentences/master/svgs/3f49fc99e50a1ad77bd8c8dfed15f8aa.svg?invert_in_darkmode" align=middle width=80.12994pt height=24.56553pt/> if and only if
 
-$$ \alpha - (t+h) = \beta - t, \text{ and } 2t+h\le k, $$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/9bf91f4f2282c9d7c35b4e37fe669bf1.svg?invert_in_darkmode" align=middle width=260.4459pt height=16.376943pt/></p>
 which is equivalent as
-$$ \alpha - (t+h) = \beta - t,\; t=\operatorname{floor}\left(\frac{k-h}2\right). $$
+<p align="center"><img src="https://rawgit.com/xhu4/sentences/master/svgs/1c5be11a48f99064cfc1a5160e60235a.svg?invert_in_darkmode" align=middle width=285.58695pt height=39.30498pt/></p>
 
 ### Functions
 
-For a set $A$ of $p$-word sentences, and a set $B$ of $q$-word sentences, say we want to 
-remove all $\beta\in B$, where $d(\alpha, \beta)\le k$ for some $\alpha\in A$. Without loss of 
-generality, we assume $p\ge q$. Two functions are written to solve two different cases: $p = q,
-\; \;0<p-q\le k$, which are `amam()` and `ambn()` respectively.
+For a set <img src="https://rawgit.com/xhu4/sentences/master/svgs/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode" align=middle width=12.282765pt height=22.38192pt/> of <img src="https://rawgit.com/xhu4/sentences/master/svgs/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode" align=middle width=8.2397205pt height=14.10255pt/>-word sentences, and a set <img src="https://rawgit.com/xhu4/sentences/master/svgs/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode" align=middle width=13.243725pt height=22.38192pt/> of <img src="https://rawgit.com/xhu4/sentences/master/svgs/d5c18a8ca1894fd3a7d25f242cbe8890.svg?invert_in_darkmode" align=middle width=7.8985335pt height=14.10255pt/>-word sentences, say we want to 
+remove all <img src="https://rawgit.com/xhu4/sentences/master/svgs/4055140544e47b792d3eb72348913116.svg?invert_in_darkmode" align=middle width=43.424865pt height=22.74591pt/>, where <img src="https://rawgit.com/xhu4/sentences/master/svgs/8fe2fac4eb2d77efffcdc6d534f15506.svg?invert_in_darkmode" align=middle width=80.12994pt height=24.56553pt/> for some <img src="https://rawgit.com/xhu4/sentences/master/svgs/140852cd080b024d735438df351bebc7.svg?invert_in_darkmode" align=middle width=42.870135pt height=22.38192pt/>. Without loss of 
+generality, we assume <img src="https://rawgit.com/xhu4/sentences/master/svgs/e5c5062e7a758e33000e19fb59e03051.svg?invert_in_darkmode" align=middle width=38.00808pt height=20.83059pt/>. Two functions are written to solve two different cases: <img src="https://rawgit.com/xhu4/sentences/master/svgs/656e2f0f389dd67a66d1019404b187ca.svg?invert_in_darkmode" align=middle width=151.584675pt height=22.74591pt/>, which are `amam()` and `ambn()` respectively.
 
 ### Traps and Tricks
 
-One can easily end up deleting more sentences than they should when $k>0$. For example, we 
-decide to remove $\alpha$ because $d(\alpha, \beta)\le k$ for some $\beta$, and then remove 
-$\beta$ because $d(\beta, \gamma)\le k$, then there is a chance we cannot find any sentence in 
-our result within distance $k$ of $\alpha$. To avoid such situation, we go through all 
+One can easily end up deleting more sentences than they should when <img src="https://rawgit.com/xhu4/sentences/master/svgs/f9bbd08bf846520586581437c960abac.svg?invert_in_darkmode" align=middle width=39.101865pt height=22.74591pt/>. For example, we 
+decide to remove <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/> because <img src="https://rawgit.com/xhu4/sentences/master/svgs/8fe2fac4eb2d77efffcdc6d534f15506.svg?invert_in_darkmode" align=middle width=80.12994pt height=24.56553pt/> for some <img src="https://rawgit.com/xhu4/sentences/master/svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.1277pt height=22.74591pt/>, and then remove 
+<img src="https://rawgit.com/xhu4/sentences/master/svgs/8217ed3c32a785f0b5aad4055f432ad8.svg?invert_in_darkmode" align=middle width=10.1277pt height=22.74591pt/> because <img src="https://rawgit.com/xhu4/sentences/master/svgs/45a5678c1336e3335f188fa0221c87c4.svg?invert_in_darkmode" align=middle width=78.984675pt height=24.56553pt/>, then there is a chance we cannot find any sentence in 
+our result within distance <img src="https://rawgit.com/xhu4/sentences/master/svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.041505pt height=22.74591pt/> of <img src="https://rawgit.com/xhu4/sentences/master/svgs/c745b9b57c145ec5577b82542b2df546.svg?invert_in_darkmode" align=middle width=10.537065pt height=14.10255pt/>. To avoid such situation, we go through all 
 sentences from the longest to the shortest, and always remove the shorter sentences when a 
 pair of neighbors is found.
 
