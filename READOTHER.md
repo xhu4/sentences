@@ -76,12 +76,12 @@ The rest of this section talks about solving $k>1$.
 We define some notations as follows:
 
 * $l(\alpha)$: number of words of sentence $\alpha$;
-* $\alpha - n$: set of all strings that are sentence `\alpha` delete $n$ words;
+* $\alpha - n$: set of all strings that are sentence $\alpha$ delete $n$ words;
 * $\alpha -m = \beta - n$: $(\alpha-m) \cap (\beta-n) \ne \emptyset$. Or, there exists a way 
   such that sentence $\alpha$ removing some $m$ words is identical to sentence $\beta$ 
   removing $n$ words;
   
-Given two sentences $\alpha$ and $beta$, if
+Given two sentences $\alpha$ and $\beta$, if
 
 $$ \alpha-m = \beta-n, $$
 
