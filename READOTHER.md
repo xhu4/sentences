@@ -1,4 +1,4 @@
-# Sentences - find similar sentences
+# sentences - find similar sentences
 
 This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgnet.org/~douglas/Classes/bigdata/index.html) class, written in python. This is my second trial. My first trial is written in C and used a different definition of distance and is not *github*-ed.
 
@@ -29,10 +29,10 @@ The goal is to filter out a set of sentences in a text file, given $k$, such tha
 This code is written in Python 2 but should be compatible with python3. 4 currently built-in 
 modules are employed: `timeit`, `collections`, `itertools`, and `argparse`.
 
-Run `python[3] Sentences.py -h` to show usage information:
+Run `python[3] sentences.py -h` to show usage information:
 
 ```sh
-usage: Sentences.py [-h] [-d [K]] [-o [filename]] [infile]
+usage: sentences.py [-h] [-d [K]] [-o [filename]] [infile]
 
 Solve Big Sentences Problem.
 
@@ -52,7 +52,7 @@ optional arguments:
 Solve distance 2 problem on *1M.txt*, and write the result to file *out.txt*:
 
 ```sh
-python Sentences.py 1M.txt -d2 -o out.txt
+python sentences.py 1M.txt -d2 -o out.txt
 ```
 
 ---
