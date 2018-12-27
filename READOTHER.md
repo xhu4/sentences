@@ -1,6 +1,6 @@
 # Sentences - find similar sentences
 
-This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgnet.org/~douglas/Classes/bigdata/index.html) class, written in python. This is my second trial. My first trial is written in C and used a different definition of distance and is not *github*d.
+This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgnet.org/~douglas/Classes/bigdata/index.html) class, written in python. This is my second trial. My first trial is written in C and used a different definition of distance and is not *github*-ed.
 
 ## Problem Description
 
@@ -13,7 +13,7 @@ A *change* to a sentence $\alpha$ can be:
 
 A distance function $d(\cdot,\cdot)$ of sentences is then defined as:
 
-$$ d(\alpha,\beta)\coloneqq\text{minimum number of changes applied to $\alpha$ to get $\beta$}
+$$ d(\alpha,\beta):=\text{minimum number of changes applied to $\alpha$ to get $\beta$}
 . $$
 
 The goal is to filter out a set of sentences in a text file, given $k$, such that:
@@ -119,32 +119,50 @@ pair of neighbors is found.
 
 ## Result & Performance
 
-Performance table (in second):
+File metadata:
+
+| Input file | # of lines | file size |
+| :--------: | ---------- | --------- |
+|  100.txt   | 100        | 12K       |
+|   1K.txt   | 1,000      | 96K       |
+|  10K.txt   | 10,000     | 884K      |
+|  100K.txt  | 100,000    | 8.4M      |
+|   1M.txt   | 1,000,000  | 85M       |
+|   5M.txt   | 5,000,000  | 428M      |
+|  25M.txt   | 25,000,000 | 2.1G      |
+
+Performance (in second):
 
 | Input file | Distance 0 | Distance 1 | Distance 2  |
 | :--------: | ---------- | ---------- | ----------- |
-| 100.txt    | 0.000120   | 0.002948   | 0.002877    |
-| 1K.txt     | 0.000390   | 0.016582   | 0.131046    |
-| 10K.txt    | 0.003342   | 0.148118   | 1.858770    |
-| 100K.txt   | 0.040530   | 1.492312   | 21.979624   |
-| 1M.txt     | 0.545091   | 16.050876  | 287.006949  |
-| 5M.txt     | 2.829443   | 72.055627  | 1526.300508 |
-| 25M.txt    | 18.832576  | 250.135241 | 5350.679652 |
+|  100.txt   | 0.000120   | 0.002948   | 0.002877    |
+|   1K.txt   | 0.000390   | 0.016582   | 0.131046    |
+|  10K.txt   | 0.003342   | 0.148118   | 1.858770    |
+|  100K.txt  | 0.040530   | 1.492312   | 21.979624   |
+|   1M.txt   | 0.545091   | 16.050876  | 287.006949  |
+|   5M.txt   | 2.829443   | 72.055627  | 1526.300508 |
+|  25M.txt   | 18.832576  | 250.135241 | 5350.679652 |
 
 Result (# of output sentences)
 
 | Input file | Distance 0 | Distance 1 | Distance 2 |
 | :--------: | ---------- | ---------- | ---------- |
-| 100.txt    | 98         | 98         | 98         |
-| 1K.txt     | 921        | 921        | 917        |
-| 10K.txt    | 9179       | 9160       | 9075       |
-| 100K.txt   | 84111      | 83646      | 80873      |
-| 1M.txt     | 769170     | 760391     | 714946     |
-| 5M.txt     | 3049422    | 2996383    | 2763966    |
-| 25M.txt    | 8703720    | 8506155    | 7712287    |
+|  100.txt   | 98         | 98         | 98         |
+|   1K.txt   | 921        | 921        | 917        |
+|  10K.txt   | 9179       | 9160       | 9075       |
+|  100K.txt  | 84111      | 83646      | 80873      |
+|   1M.txt   | 769170     | 760391     | 714946     |
+|   5M.txt   | 3049422    | 2996383    | 2763966    |
+|  25M.txt   | 8703720    | 8506155    | 7712287    |
 
 ---
 
 ## Reference
 
 The **Big Sentences** problem is described in [Craig's webpage](http://mgnet.org/~douglas/Classes/common-problems/index.html#BigSentences), which also contains all sentence files used in the above section.
+
+---
+
+## Roadmap
+
+- [ ] Add unit test

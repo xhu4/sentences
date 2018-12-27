@@ -32,8 +32,8 @@ def to_tuple(set_sentences):
     OUTPUT: set_tuples       a set of corresponding tuples
     """
     result = set()
-    for s in set_sentences:
-        result.add(tuple(s.split()))
+    for sentence in set_sentences:
+        result.add(tuple(sentence.split()))
     return result
 
 
