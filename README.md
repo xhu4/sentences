@@ -1,6 +1,6 @@
 # Sentences - find similar sentences
 
-This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgnet.org/~douglas/Classes/bigdata/index.html) class, written in python. This is my second trial. My first trial is written in C and used a different definition of distance and is not *github*d.
+This is a homework project for Craig Douglas' [*Big Data and Mining*](http://mgnet.org/~douglas/Classes/bigdata/index.html) class, written in python. This is my second trial. My first trial is written in C and used a different definition of distance and is not *github*ed.
 
 ## Problem Description
 
@@ -149,6 +149,6 @@ The **Big Sentences** problem is described in [Craig's webpage](http://mgnet.org
 
 ---
 
-## ToDo List
+## Roadmap
 
-- [ ] Test correctness
+- [ ] Add unittest
